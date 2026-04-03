@@ -6,7 +6,7 @@
 Secretario::Secretario() = default;
 
 Secretario::Secretario(int id, std::string nome, std::string nomeFunc, double salario, int idade, std::string departamento):
-Funcionario(id,nome, nomeFunc, salario, idade)
+Funcionario(id, nome, nomeFunc, salario, idade)
 {
     this->departamento = departamento;
 }
