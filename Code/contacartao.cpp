@@ -1,17 +1,19 @@
 #include <iostream>
 #include "contacartao.h"
+#include "instituicao.h"
+#include "funcionario.h"
 
 //Constructor default/vazio
 ContaCartao::ContaCartao() = default;
 
-ContaCartao::ContaCartao(int id, std::string nome, int idade, int senhaDeAccesso, double saldo, std::string tipo): Entidade(id, nome, idade)
+ContaCartao::ContaCartao(int id, std::string nome, long senhaDeAccesso, double saldo, Funcionario titular): Instituicao(id, nome)
 {
     this->senha = senhaDeAccesso;
     this->saldo = saldo;
-    this->tipoDeConta = tipo;
+    this->titular = titular;
 }
 
-void ContaCartao::setSenha(int senha)
+void ContaCartao::setSenha(long senha)
 {
     this->senha = senha;
 }
@@ -21,12 +23,7 @@ void ContaCartao::setSaldo(double saldo)
     this->saldo = saldo;
 }
 
-void ContaCartao::setTipoDeConta(std::string tipo)
-{
-    this->tipoDeConta = tipo;
-}
-
-int ContaCartao::getSenha()
+long ContaCartao::getSenha()
 {
     return this->senha;
 }
@@ -36,7 +33,7 @@ double ContaCartao::getSaldo()
     return this->saldo;
 }
 
-std::string ContaCartao::getTipoDeConta()
+Funcionario ContaCartao::getTitular()
 {
-    return this->tipoDeConta;
+    return this->titular;
 }

@@ -4,19 +4,19 @@
 //Constructor default/vazio
 Funcionario::Funcionario() = default;
 
-Funcionario::Funcionario(int id, std::string nome, int idade, std::string turno, double salario, std::string contacto): Entidade(id, nome, idade)
+Funcionario::Funcionario(int id, std::string nome, std::string nomeFunc, double salario, int idade): Instituicao(id, nome)
 {
-	this->turno = turno;
+	this->nomeFunc = nomeFunc;
 	this->salario = salario;
-	this->contacto = contacto;
+	this->idade = idade;
 }
-void Funcionario::setContacto(std::string contacto)
+void Funcionario::setIdade(int idade)
 {
-	this->contacto = contacto;
+	this->idade = idade;
 }
-void Funcionario::setTurno(std::string turno)
+void Funcionario::setNomeFunc(std::string nomeFunc)
 {
-	this->turno = turno;
+	this->nomeFunc = nomeFunc;
 }
 void Funcionario::setSalario(double salario)
 {
@@ -26,11 +26,11 @@ double Funcionario::getSalario()
 {
 	return this->salario;
 }
-std::string Funcionario::getTurno()
+std::string Funcionario::getNomeFunc()
 {
-	return this->turno;
+	return this->nomeFunc;
 }
-std::string Funcionario::getContacto()
+int Funcionario::getIdade()
 {
-	return this->contacto;
+	return this->idade;
 }

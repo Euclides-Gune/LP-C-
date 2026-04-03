@@ -1,5 +1,5 @@
 #include <iostream>
-#include "entidade.h"
+#include "instituicao.h"
 #include "contacartao.h"
 #include "funcionario.h"
 #include "docente.h"
@@ -7,15 +7,26 @@
 
 int main()
 {
-    Entidade ent { 1, "Euclides", 19 };
-    ContaCartao ct { 1, "Euclides", 19, 1122, 1000, "Poupança" };
-    Funcionario f { 1, "Euclides", 19, "laboral", 2000, "871112222" };
-    Docente dc {  1, "Euclides", 19, "laboral", 2000, "871112222", "Licenciado", "Engenheiro civil", "assistente" };
-    Secretario s {  1, "Euclides", 19, "laboral", 2000, "871112222", "Engenharia Electrotécnica" };
-    std::cout << ent.getNome() << '\n';
-    std::cout << ct.getSaldo() << '\n';
-    std::cout << f.getContacto() << '\n';
-    std::cout << dc.getGrauAcademico() << '\n';
-    std::cout << s.getDepartamento() << '\n';
+    Instituicao i { 1, "UEM" };
+    Funcionario f { 1, "UEM", "Euclides", 450000, 19 };
+    ContaCartao cc { 1, "UEM", 777555, 500000, f };
+    Docente dc { 1, "UEM", "Euclides", 450000, 19, "PHD", "Ciência da Computação", "Regente" };
+    Secretario s { 1, "UEM", "Wendy", 10000000, 18, "Engenharia Informatica" };
+
+    std::cout << "Docente: \n";
+    std::cout << "Nome: " << dc.getNomeFunc() << '\n';
+    std::cout << "Instituicao: " << dc.getNomeDaInstituicao() << '\n'; 
+    std::cout << "Idade: " << dc.getIdade() << '\n'; 
+    std::cout << "Salario: " << dc.getSalario() << '\n'; 
+    std::cout << "Grau academico: " << dc.getGrauAcademico() << '\n'; 
+    std::cout << "Curso: " << dc.getCurso() << '\n'; 
+    std::cout << "Estado: " << dc.getEstado() << '\n'; 
+    std::cout << "Secretario: " << '\n';
+    std::cout << "Nome: " << s.getNomeFunc() << '\n';
+    std::cout << "Instituicao: " << s.getNomeDaInstituicao() << '\n'; 
+    std::cout << "Idade: " << s.getIdade() << '\n'; 
+    std::cout << "Salario: " << s.getSalario() << '\n'; 
+    std::cout << "Departamento: " << s.getDepartamento() << '\n';
+ 
     return 0;
 }

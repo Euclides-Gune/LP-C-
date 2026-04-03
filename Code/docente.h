@@ -10,7 +10,7 @@ class Docente : public Funcionario {
 
 public:
     Docente();
-    Docente(int id, std::string nome, int idade, std::string turno, double salario, std::string contacto, std::string grauAcademico, std::string curso, std::string estado);
+    Docente(int id, std::string nome, std::string nomeFunc, double salario, int idade, std::string grauAcademico, std::string curso, std::string estado);
     void setGrauAcademico(std::string grau);
     void setCurso(std::string curso);
     void setEstado(std::string estado);

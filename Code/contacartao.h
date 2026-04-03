@@ -2,22 +2,23 @@
 #define CONTACARTAO_H
 
 #include <iostream>
-#include "entidade.h" // Herança
+// Herança
+#include "instituicao.h"
+#include "funcionario.h"
 
-class ContaCartao : public Entidade
+class ContaCartao : public Instituicao
 {
-    int senha{};
+    long senha{};
     double saldo{};
-    std::string tipoDeConta;
+    Funcionario titular;
 public:
     ContaCartao();
-    ContaCartao(int id, std::string nome, int idade, int senhaDeAccesso, double saldo, std::string tipo);
-    void setSenha(int senha);
+    ContaCartao(int id, std::string nome, long senhaDeAccesso, double saldo, Funcionario titular);
+    void setSenha(long senha);
     void setSaldo(double saldo);
-    void setTipoDeConta(std::string tipo);
-    int getSenha();
+    long getSenha();
     double getSaldo();
-    std::string getTipoDeConta();
+    Funcionario getTitular();
 };
 
 #endif

@@ -1,11 +1,12 @@
 #include <iostream>
 #include "secretario.h"
+#include "funcionario.h"
 
 //Constructor default/vazio
 Secretario::Secretario() = default;
 
-Secretario::Secretario(int id, std::string nome, int idade, std::string turno, double salario, std::string contacto, std::string departamento):
-Funcionario(id,nome, idade,turno,salario,contacto)
+Secretario::Secretario(int id, std::string nome, std::string nomeFunc, double salario, int idade, std::string departamento):
+Funcionario(id,nome, nomeFunc, salario, idade)
 {
     this->departamento = departamento;
 }
