@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <vector>
 #include "instituicao.h"
 #include "docente.h"
 #include "secretario.h"
@@ -84,7 +85,7 @@ void registrarConta(std::string nomeInst, std::string titular, std::string cargo
     delete cc;
 }
 
-void registrarFuncionario(std::string nomeInst)
+void registrarFuncionario(std::string nomeInst, std::vector<Docente>& docs, std::vector<Secretario>& secs)
 {
     std::cout << "Nome: ";
     std::string nome{};
@@ -128,6 +129,7 @@ void registrarFuncionario(std::string nomeInst)
 
             Docente* doc = new Docente(id, nomeInst, nome, salario, idade, grau, curso, estado);
             outf << doc->getID() << ' ' << doc->getNome() << ' ' << doc->getNomeFunc() << ' ' << doc->getSalario() << ' ' << doc->getIdade() << ' ' << doc->getGrauAcademico() << ' ' << doc->getCurso() << ' ' << doc->getEstado() << ' ' << cargo << ' ' << '\n';
+            docs.push_back(*doc);
             delete doc;
     } else if(op == 2) {
         cargo = "Secretario";
@@ -136,6 +138,7 @@ void registrarFuncionario(std::string nomeInst)
         std::getline(std::cin >> std::ws, dep);
         Secretario* ss = new Secretario(id, nomeInst, nome, salario, idade, dep);
         outf << ss->getID() << ' ' << ss->getNome() << ' ' << ss->getNomeFunc() << ' ' << ss->getSalario() << ' ' << ss->getIdade() << ' ' << ss->getDepartamento() << ' ' << cargo << ' ' << '\n';
+        secs.push_back(*ss);
         delete ss;
     }
 
@@ -144,13 +147,13 @@ void registrarFuncionario(std::string nomeInst)
     registrarConta(nomeInst, nome, cargo);
 }
 
-void registrarFuncionarios()
+void registrarFuncionarios(std::vector<Docente>& docs, std::vector<Secretario>& secs)
 {
     std::cout << "Digite o nome da instituicao: ";
     std::string nomeInst{};
     std::getline(std::cin >> std::ws, nomeInst);
     if(validarInstituicao(nomeInst)) {
-        registrarFuncionario(nomeInst);
+        registrarFuncionario(nomeInst, docs, secs);
     } else {
         std::cout << "\nNome de instituicao invalido!\n";
     }
@@ -226,10 +229,12 @@ void entrarConta()
         std::cout << "\nDados da conta cartao:\n\n"; 
         std::cout << cc;
         std::cout << "Cargo: " << cargo << '\n';
-    }  
+    }  else {
+        std::cout << "\nDados invalidos!\n";
+    }
 }
 
-void menu()
+void menu(std::vector<Docente>& docs, std::vector<Secretario>& secs)
 {
     int op{};
     do
@@ -243,7 +248,7 @@ void menu()
                 registrarInstituicao();
             break;
             case 2:
-                registrarFuncionarios();
+                registrarFuncionarios(docs, secs);
             break;
             case 3:
                 entrarConta();
@@ -258,8 +263,33 @@ void menu()
     } while(op != 4);
 }
 
+std::ostream& operator<<(std::ostream& out, const Docente& doc)
+{
+    out << "ID: " << doc.getID() << "\nNome da instituicao: " << doc.getNome() << "\nNome do funcionario: " << doc.getNomeFunc() << "\nIdade: " << doc.getIdade() << "\nSalario: " << doc.getSalario() << "\nGrau academico: " << doc.getGrauAcademico() << "\nCurso: " << doc.getCurso() << "\nEstado: " << doc.getEstado() << '\n';
+    return out;
+}
+
+std::ostream& operator<<(std::ostream& out, const Secretario& sec)
+{
+    out << "ID: " << sec.getID() << "\nNome da instituicao: " << sec.getNome() << "\nNome do funcionario: " << sec.getNomeFunc() << "\nIdade: " << sec.getIdade() << "\nSalario: " << sec.getSalario() << "\nGrau academico: " << sec.getDepartamento() << '\n';
+    return out;
+}
+ 
 int main()
 {
-    menu();
+    std::vector<Docente> docs;
+    std::vector<Secretario> secs;
+    menu(docs, secs);
+
+    std::cout << "\nDados dos funcionarios adicionados:\n";
+    std::cout << "\nDocentes: \n\n";
+    for(int i = 0; i < docs.size(); i++) {
+        std::cout << docs[i] << '\n';
+    }
+    std::cout << "\n\nSecretarios: \n\n";
+    for(int i = 0; i < secs.size(); i++) {
+        std::cout << secs[i] << '\n';
+    }
+
     return 0;
 }

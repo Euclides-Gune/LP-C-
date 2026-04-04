@@ -1,2 +1,2 @@
-1 UEM Euclides Docente 100000 112233
-2 UEM Irzelina Secretario 111111 223311
+
+2 ISUTC Euclides Secretario 200000 112233
