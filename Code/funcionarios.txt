@@ -1,2 +1,2 @@
- 
-2 ISUTC Euclides 30000 19 Engenharia Electrotecnica Secretario 
+1 UEM Euclides 250 19 Licenciatura Engenharia Infomartica Regente Docente 
+2 ISUTC Assuade 250000 18 Engenharia Electrotecnica Secretario 
