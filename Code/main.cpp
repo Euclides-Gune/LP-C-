@@ -1,180 +1,265 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "instituicao.h"
-#include "contacartao.h"
-#include "funcionario.h"
 #include "docente.h"
 #include "secretario.h"
+#include "contacartao.h"
 
-Instituicao inserirInstituicao()
+std::ostream& operator<<(std::ostream& out, const ContaCartao& cc)
 {
-    std::cout << "\n-------------------------------\n";
-    std::cout << "|   Registo de Instituicoes   |";
-    std::cout << "\n-------------------------------\n";
+    out << "ID: " << cc.getID()
+    << "\nNome da instituicao: " << cc.getNome() << "\nTitular: " << cc.getTitular() << "\nSaldo: " << cc.getSaldo() << '\n';
+    return out;
+}
+
+int numeroDe(std::string f)
+{
+    std::ifstream inf { f };
+    std::string line{};
+    int count = 0;
+    while(std::getline(inf, line))
+    {
+        count++;
+    }
+    inf.close();
+    return count;
+}
+
+void registrarInstituicao()
+{
+    int id = numeroDe("insts.txt") + 1;
     std::cout << "Nome da instituicao: ";
     std::string nomeInst{};
     std::getline(std::cin >> std::ws, nomeInst);
-    // Para  não recriar id
-    static int id = 0;
-    return { ++id, nomeInst };
+
+    Instituicao* inst = new Instituicao(id, nomeInst);
+
+    std::ofstream outf { "insts.txt", std::ios::app };
+
+    outf << id << ' ' << nomeInst << '\n';
+
+    delete inst;
+    outf.close();
 }
 
-Docente novoDocente(std::string nomeInst)
+bool validarInstituicao(std::string str)
 {
-    std::cout << "Nome do docente: ";
-    std::string nome{};
-    std::getline(std::cin >> std::ws, nome);
-    std::cout << "Idade: ";
-    int idade{};
-    std::cin >> idade;
-    std::cout << "Salario: ";
-    double salario{};
-    std::cin >> salario;
-    std::cout << "Grau academico: ";
-    std::string grauAcademico{};
-    std::getline(std::cin >> std::ws, grauAcademico);
-    std::cout << "Curso: ";
-    std::string curso{};
-    std::getline(std::cin >> std::ws, curso);
-    std::cout << "Estado: \n1. Regente\n2. Assistente\n-> ";
-    std::string estado{};
-    int opc;
-    std::cin >> opc;
-    switch (opc)
+    std::ifstream inf { "insts.txt" };
+    std::string input{};
+    int id = 0;
+    int count = 1;
+    while(inf >> input) 
     {
-        case 1:
-            estado = "Docente";
-        break;
-        case 2:
-            estado = "Assistente";
-        break;
-        default:
-            std::cout << "Opção inválida";
-        break;
-    }
-    static int id{0};
-    return Docente { id++, nomeInst, nome, salario, idade, grauAcademico, curso, estado  };
-}
-
-Secretario novoSecretario(std::string nomeInst)
-{
-    std::cout << "Nome do secretario: ";
-    std::string nome{};
-    std::getline(std::cin >> std::ws, nome);
-    std::cout << "Idade: ";
-    int idade{};
-    std::cin >> idade;
-    std::cout << "Salario: ";
-    double salario{};
-    std::cin >> salario;
-    std::cout << "Departamento: ";
-    std::string dep;
-    std::getline(std::cin >> std::ws, dep);
-    static int id{0};
-    return Secretario { id++, nomeInst, nome, salario, idade, dep };
-}
-
-void menuCartao()
-{
-    int op{};
-}
-
-void novoFuncionario(std::string nomeInst)
-{
-    int op{};
-    Docente doc;
-    Secretario s;
-    std::cout << "\n-------------------------------\n";
-    std::cout << "|   Registo de Funcionarios   |";
-    std::cout << "\n-------------------------------\n";
-    std::cout << "1. Inserir docente\n";
-    std::cout << "2. Inserir secretario\n";
-    std::cout << "3. Voltar\n";
-    std::cout << "\n-> ";
-    std::cin >> op;
-    switch(op)
-    {
-        case 1:
-            doc = novoDocente(nomeInst);
-        break;
-        case 2:
-            s = novoSecretario(nomeInst);
-        break;
-        case 3:
-            return;
-        default:
-            std::cout << "Opcao invalida.\n";
-        break;
-    }
-    menuCartao();
-}
-
-void menuFuncionario(std::string nomeInst)
-{
-    int op{};
-    std::cout << "\n============ Funcionarios ============\n";
-    std::cout << "1. Novo funcionario\n";
-    std::cout << "2. Visualizar docentes\n";
-    std::cout << "3. Visualizar secretarios\n";
-    std::cout << "4. Sair\n";
-    std::cout << "\n-> ";
-    std::cin >> op;
-
-    switch (op)
-    {
-        case 1:
-            novoFuncionario(nomeInst);
-        break;
-        case 2:
-            std::cout << "\nDocentes.\n";
-        break;
-        case 3:
-            std::cout << "\nSecretarios.\n";
-        break;
-        default:
-            std::cout << "\nOpcao invalida!\n";
-        break;
-    }
-}
-
-void entrar()
-{
-    std::cout << "Nome da instituicao: ";
-    std::string nome{};
-    std::getline(std::cin >> std::ws, nome);
-    menuFuncionario(nome);
-}
-
-void exibirMenu()
-{
-    int op{ 0 };
-    do 
-    {
-        std::cout << "\n============  Instituicoes ============\n";
-        std::cout << "1. Registar Instituicao\n";
-        std::cout << "2. Entrar em uma Instituicao\n";
-        std::cout << "3. Sair\n";
-        std::cout << "\n-> ";
-        std::cin >> op;
-        switch(op) {
+        switch(count)
+        {
             case 1:
-                  
+                count++;
             break;
             case 2:
-                entrar();
-            break;
-            case 3: 
-                std::cout << "\nSaindo do sistema...Ciao";
-            break;
-            default:
-                std::cout << "Opcao invalida!\n";
+                if(str == input)
+                    return 1;
+                count = 1;
             break;
         }
-    } while(op != 3);
+    }
+    return 0;
+}
+
+void registrarConta(std::string nomeInst, std::string titular, std::string cargo)
+{
+    std::cout << "Registro da conta cartao do funcionario " << titular << ":\n";
+    std::cout << "Defina uma senha: ";
+    std::string senha{};
+    std::getline(std::cin >> std::ws, senha);
+    std::cout << "Saldo: ";
+    double saldo{};
+    std::cin >> saldo;
+
+    int id = numeroDe("contas.txt") + 1;
+    ContaCartao* cc = new ContaCartao(id, nomeInst, senha, saldo, titular);
+    std::ofstream outf { "contas.txt", std::ios::app };
+    outf << cc->getID() << ' ' << cc->getNome() << ' ' << cc->getTitular() << ' ' << cargo << ' ' << cc->getSaldo() << ' ' << cc->getSenha() << '\n';
+    outf.close();
+    delete cc;
+}
+
+void registrarFuncionario(std::string nomeInst)
+{
+    std::cout << "Nome: ";
+    std::string nome{};
+    std::getline(std::cin >> std::ws, nome);
+    std::cout << "Idade: ";
+    int idade{};
+    std::cin >> idade;
+    std::cout << "Salario: ";
+    double salario{};
+    std::cin >> salario;
+    int id = numeroDe("funcionarios.txt") + 1;
+    std::cout << "\nCargo:\n1. Docente\n2. Secretario\n\nopcao: ";
+    std::string cargo{};
+    int op{};
+    std::cin >> op;
+
+    std::ofstream outf { "funcionarios.txt", std::ios::app };
+
+    if(op == 1) {
+            cargo = "Docente";
+            std::cout << "Grau academico: ";
+            std::string grau{};
+            std::getline(std::cin >> std::ws, grau);
+            std::cout << "Curso: ";
+            std::string curso{};
+            std::getline(std::cin >> std::ws, curso);
+            std::cout << "\nEstado:\n1. Regente\n2. Assistente\n\nOpcao: ";
+            std::string estado{};
+            int opc{};
+            std::cin >> opc;
+            switch(opc)
+            {
+                case 1: estado = "Regente";
+                break;
+                case 2: estado = "Assistente";
+                break;
+                default:
+                    std::cout << "\nInvalido!\n";
+                break;
+            }
+
+            Docente* doc = new Docente(id, nomeInst, nome, salario, idade, grau, curso, estado);
+            outf << doc->getID() << ' ' << doc->getNome() << ' ' << doc->getNomeFunc() << ' ' << doc->getSalario() << ' ' << doc->getIdade() << ' ' << doc->getGrauAcademico() << ' ' << doc->getCurso() << ' ' << doc->getEstado() << ' ' << cargo << ' ' << '\n';
+            delete doc;
+    } else if(op == 2) {
+        cargo = "Secretario";
+        std::cout << "Departamento: ";
+        std::string dep{};
+        std::getline(std::cin >> std::ws, dep);
+        Secretario* ss = new Secretario(id, nomeInst, nome, salario, idade, dep);
+        outf << ss->getID() << ' ' << ss->getNome() << ' ' << ss->getNomeFunc() << ' ' << ss->getSalario() << ' ' << ss->getIdade() << ' ' << ss->getDepartamento() << ' ' << cargo << ' ' << '\n';
+        delete ss;
+    }
+
+    outf.close();
+
+    registrarConta(nomeInst, nome, cargo);
+}
+
+void registrarFuncionarios()
+{
+    std::cout << "Digite o nome da instituicao: ";
+    std::string nomeInst{};
+    std::getline(std::cin >> std::ws, nomeInst);
+    if(validarInstituicao(nomeInst)) {
+        registrarFuncionario(nomeInst);
+    } else {
+        std::cout << "\nNome de instituicao invalido!\n";
+    }
+}
+
+ContaCartao getConta(std::string& cargo)
+{
+    std::cout << "\n============== Entrar Com Conta Cartao ==============\n";
+    std::cout << "Nome da instituicao: ";
+    std::string nomeI{};
+    std::getline(std::cin >> std::ws, nomeI);
+    std::cout << "Titular: ";
+    std::string titular{};
+    std::getline(std::cin >> std::ws, titular);
+    std::cout << "Senha: ";
+    std::string pass{};
+    std::getline(std::cin >> std::ws, pass);
+
+    std::ifstream inf { "contas.txt" };
+    std::string input{};
+    int count = 1;
+
+    int id = 0;
+    std::string nomeInst{};
+    std::string nome{};
+    std::string senha{};
+    double saldo = 0;
+
+    ContaCartao cc;
+
+    while(inf >> input) {
+        switch(count)
+        {
+            case 1:
+            id = std::stoi(input);
+            count++;
+            break;
+            case 2: nomeInst = input;
+            count++;
+            break;
+            case 3: nome = input;
+            count++;
+            break;
+            case 4:
+            cargo = input;
+            count++;
+            break;
+            case 5: 
+            saldo = std::stod(input);
+            count++;
+            break;
+            case 6:
+            senha = input;
+            count++;
+            count = 1;
+            break;
+        }
+        if(nomeI == nomeInst && nome == titular && senha == pass) {
+            cc = ContaCartao(id, nomeInst, senha, saldo, nome);
+            return cc;
+            break;
+        }
+    }
+
+    return ContaCartao();
+}
+
+void entrarConta()
+{
+    std::string cargo{};
+    ContaCartao cc = getConta(cargo);
+    if(cc.getID() != 0) {
+        std::cout << "\nDados da conta cartao:\n\n"; 
+        std::cout << cc;
+        std::cout << "Cargo: " << cargo << '\n';
+    }  
+}
+
+void menu()
+{
+    int op{};
+    do
+    {
+        std::cout << "\n1. Registrar instituicao\n";
+        std::cout << "2. Registrar funcionarios\n3. Entrar com conta cartao\n4. Sair\nOpcao: ";
+        std::cin >> op;
+        switch(op)
+        {
+            case 1:
+                registrarInstituicao();
+            break;
+            case 2:
+                registrarFuncionarios();
+            break;
+            case 3:
+                entrarConta();
+            break;
+            case 4:
+                std::cout << "\nSaindo do programa...\nCiao\n";
+                break;
+            default:
+                std::cout << "Opc invalida!\n";
+                break;
+        }
+    } while(op != 4);
 }
 
 int main()
 {
-    entrar();
+    menu();
     return 0;
 }

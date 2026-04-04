@@ -22,15 +22,15 @@ void Funcionario::setSalario(double salario)
 {
 	this->salario = salario;
 }
-double Funcionario::getSalario()
+double Funcionario::getSalario() const
 {
 	return this->salario;
 }
-std::string Funcionario::getNomeFunc()
+std::string Funcionario::getNomeFunc() const
 {
 	return this->nomeFunc;
 }
-int Funcionario::getIdade()
+int Funcionario::getIdade() const
 {
 	return this->idade;
 }

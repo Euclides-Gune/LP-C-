@@ -26,17 +26,17 @@ void Docente::setEstado(std::string estado)
     this->estado = estado;
 }
 
-std::string Docente::getGrauAcademico()
+std::string Docente::getGrauAcademico() const
 {
     return this->grauAcademico;
 }
 
-std::string Docente::getCurso()
+std::string Docente::getCurso() const
 {
     return this->curso;
 }
 
-std::string Docente::getEstado()
+std::string Docente::getEstado() const
 {
     return this->estado;
 }

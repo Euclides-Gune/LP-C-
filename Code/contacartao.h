@@ -8,17 +8,17 @@
 
 class ContaCartao : public Instituicao
 {
-    long senha{};
+    std::string senha{};
     double saldo{};
-    Funcionario titular;
+    std::string titular;
 public:
     ContaCartao();
-    ContaCartao(int id, std::string nome, long senhaDeAccesso, double saldo, Funcionario titular);
-    void setSenha(long senha);
+    ContaCartao(int id, std::string nome, std::string senhaDeAccesso, double saldo, std::string titular);
+    void setSenha(std::string senha);
     void setSaldo(double saldo);
-    long getSenha();
-    double getSaldo();
-    Funcionario getTitular();
+    std::string getSenha() const;
+    double getSaldo() const;
+    std::string getTitular() const;
 };
 
 #endif

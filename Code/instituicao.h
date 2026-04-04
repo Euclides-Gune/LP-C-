@@ -10,9 +10,8 @@ class Instituicao {
 public:
     Instituicao();
     Instituicao(int id, std::string nomeDaInstituicao);
-    int getID();
-    std::string getNomeDaInstituicao();
-
+    int getID() const;
+    std::string getNome() const;
 };
 
 #endif

@@ -16,7 +16,7 @@ void Secretario::setDepartamento(std::string departamento)
     this->departamento = departamento;
 }
 
-std::string Secretario::getDepartamento()
+std::string Secretario::getDepartamento() const
 {
     return this->departamento;
 }

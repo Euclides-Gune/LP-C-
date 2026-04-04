@@ -1,0 +1,2 @@
+1 UEM Euclides 200000 19 Licenciatura Engenharia Informatica Regente Docente 
+2 UEM Irzelina 200000 25 Engenharia Electrotecnica Secretario 

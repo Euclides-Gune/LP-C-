@@ -14,9 +14,9 @@ public:
     void setGrauAcademico(std::string grau);
     void setCurso(std::string curso);
     void setEstado(std::string estado);
-    std::string getGrauAcademico();
-    std::string getCurso();
-    std::string getEstado();
+    std::string getGrauAcademico() const;
+    std::string getCurso() const;
+    std::string getEstado() const;
 };
 
 #endif

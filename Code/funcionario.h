@@ -14,9 +14,9 @@ public:
 	void setIdade(int idade);
 	void setNomeFunc(std::string nomeFunc);
 	void setSalario(double salario);
-	double getSalario();
-	std::string getNomeFunc();
-	int getIdade();
+	double getSalario() const;
+	std::string getNomeFunc() const;
+	int getIdade() const;
 
 };
 

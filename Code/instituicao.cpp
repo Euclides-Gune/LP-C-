@@ -10,12 +10,12 @@ Instituicao::Instituicao(int id, std::string nomeDaInstituicao)
     this->nomeDaInstituicao = nomeDaInstituicao;
 }
 
-int Instituicao::getID()
+int Instituicao::getID() const
 {
     return this->id;
 }
 
-std::string Instituicao::getNomeDaInstituicao()
+std::string Instituicao::getNome() const
 {
     return this->nomeDaInstituicao;
 }
