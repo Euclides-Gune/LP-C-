@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6">
   <diagram name="Page-1" id="L8dNjuRdOjexeRHmnV_Q">
-    <mxGraphModel dx="592" dy="449" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1480" dy="1123" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -65,25 +65,13 @@
           <mxGeometry height="272" width="160" y="88" as="geometry" />
         </mxCell>
         <mxCell id="T-d291Yt_D9WQWj_H_lB-21" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Menu" vertex="1">
-          <mxGeometry height="162" width="160" x="480" y="300" as="geometry" />
-        </mxCell>
-        <mxCell id="T-d291Yt_D9WQWj_H_lB-22" parent="T-d291Yt_D9WQWj_H_lB-21" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="-op: Integer" vertex="1">
-          <mxGeometry height="34" width="160" y="26" as="geometry" />
+          <mxGeometry height="280" width="160" x="480" y="320" as="geometry" />
         </mxCell>
         <mxCell id="T-d291Yt_D9WQWj_H_lB-23" parent="T-d291Yt_D9WQWj_H_lB-21" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
-          <mxGeometry height="8" width="160" y="60" as="geometry" />
-        </mxCell>
-        <mxCell id="T-d291Yt_D9WQWj_H_lB-24" parent="T-d291Yt_D9WQWj_H_lB-21" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+MostrarMenu(): void&lt;div&gt;+&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Inserir(): Boolean&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+Actualizar(): Boolean&lt;/div&gt;&lt;div&gt;+Visualizar(): void&lt;/div&gt;&lt;div&gt;+Eliminar(): Boolean&lt;/div&gt;" vertex="1">
-          <mxGeometry height="94" width="160" y="68" as="geometry" />
-        </mxCell>
-        <mxCell id="T-d291Yt_D9WQWj_H_lB-25" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Validacao" vertex="1">
-          <mxGeometry height="190" width="160" x="480" y="480" as="geometry" />
-        </mxCell>
-        <mxCell id="T-d291Yt_D9WQWj_H_lB-27" parent="T-d291Yt_D9WQWj_H_lB-25" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" value="" vertex="1">
           <mxGeometry height="8" width="160" y="26" as="geometry" />
         </mxCell>
-        <mxCell id="T-d291Yt_D9WQWj_H_lB-28" parent="T-d291Yt_D9WQWj_H_lB-25" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+Validacao()&lt;div&gt;+ValidarString(msg: String):String&lt;/div&gt;&lt;div&gt;&lt;div&gt;+ValidarIntPositivo(msg: String):int&lt;/div&gt;&lt;div&gt;&lt;div&gt;+ValidarInterValo(msg: String, min: Integer, max: Integer):int&lt;/div&gt;&lt;div&gt;&lt;div&gt;+ValidarChar(msg: String, op1: Char, op2: Char):char&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="156" width="160" y="34" as="geometry" />
+        <mxCell id="T-d291Yt_D9WQWj_H_lB-24" parent="T-d291Yt_D9WQWj_H_lB-21" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+numeroDe(f: String): int&lt;div&gt;+registrarInstituicao&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;(): void&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+validarInstituicao(str: String): Boolean&lt;/div&gt;&lt;div&gt;+registrarConta(nomeInst: String, titular: String, cargo: String): void&lt;/div&gt;&lt;div&gt;+registrarFuncionario(nomeInst: String): void&lt;/div&gt;&lt;div&gt;+ registrarFuncionarios(): void&lt;/div&gt;&lt;div&gt;+ dadosDaConta(cargo: String): ContaCartao&lt;/div&gt;&lt;div&gt;+ entrarNaConta(): void&lt;/div&gt;&lt;div&gt;+ menu(): void&lt;/div&gt;" vertex="1">
+          <mxGeometry height="246" width="160" y="34" as="geometry" />
         </mxCell>
         <mxCell id="dvIIxXXGa91eQBMyhooe-14" edge="1" parent="1" source="T-d291Yt_D9WQWj_H_lB-3" style="endArrow=block;endFill=1;html=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=top;rounded=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;" value="">
           <mxGeometry relative="1" x="-1" as="geometry">
@@ -114,6 +102,24 @@
             </Array>
             <mxPoint x="349" y="280" as="sourcePoint" />
             <mxPoint x="479" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mjqA4V-WYgV4KGlcu4wd-7" edge="1" parent="1" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="440" y="440.44" as="sourcePoint" />
+            <mxPoint x="480" y="440.44" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mjqA4V-WYgV4KGlcu4wd-10" edge="1" parent="1" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="640" y="440.44" as="sourcePoint" />
+            <mxPoint x="680" y="440.44" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="mjqA4V-WYgV4KGlcu4wd-11" edge="1" parent="1" style="endArrow=none;html=1;edgeStyle=orthogonalEdgeStyle;rounded=0;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="559.55" y="276" as="sourcePoint" />
+            <mxPoint x="560" y="320" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>

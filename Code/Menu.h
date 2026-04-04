@@ -92,8 +92,8 @@ static void registrarConta(std::string nomeInst, std::string titular, std::strin
     int id = numeroDe("contas.txt") + 1;
     ContaCartao* cc = new ContaCartao(id, nomeInst, senha, saldo, titular);
     std::ofstream outf { "contas.txt", std::ios::app };
-    outf << cc->getID() << ' ' << cc->getNome() << ' ' << cc->getTitular() << ' ' << cargo << ' ' << cc->getSaldo() << ' ' << cc->getSenha() << '\n';
     outf.close();
+    outf << cc->getID() << ' ' << cc->getNome() << ' ' << cc->getTitular() << ' ' << cargo << ' ' << cc->getSaldo() << ' ' << cc->getSenha() << '\n';
     delete cc;
 }
 
@@ -246,7 +246,7 @@ static ContaCartao dadosDaConta(std::string& cargo)
     return ContaCartao();
 }
 
-static void entrarConta()
+static void entrarNaConta()
 {
     std::string cargo{};
     ContaCartao cc = dadosDaConta(cargo);
@@ -276,7 +276,7 @@ static void menu(std::vector<Docente>& docs, std::vector<Secretario>& secs)
                 registrarFuncionarios(docs, secs);
             break;
             case 3:
-                entrarConta();
+                entrarNaConta();
             break;
             case 4:
                 std::cout << "\nSaindo do programa...\nCiao\n";
