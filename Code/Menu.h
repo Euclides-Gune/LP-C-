@@ -287,7 +287,5 @@ static void menu(std::vector<Docente>& docs, std::vector<Secretario>& secs)
         }
     } while(op != 4);
 }
-
 };
-
 #endif
