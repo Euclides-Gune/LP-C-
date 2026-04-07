@@ -6,8 +6,7 @@
 #include "instituicao.h"
 #include "funcionario.h"
 
-class ContaCartao : public Instituicao
-{
+class ContaCartao : public Instituicao {
     std::string senha{};
     double saldo{};
     std::string titular;

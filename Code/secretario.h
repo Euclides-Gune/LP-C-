@@ -6,8 +6,6 @@
 
 class Secretario : public Funcionario {
     std::string departamento{};
-    std::string formacao{};
-    int tempExperiencia{};
 
 public:
     Secretario();

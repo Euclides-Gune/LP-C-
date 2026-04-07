@@ -4,7 +4,7 @@
 //Constructor default/vazio
 Docente::Docente() = default;
 
-Docente::Docente(int id, std::string nome, std::string nomeFunc, double salario, int idade, std::string grauAcademico, std::string curso, std::string estado): Funcionario(id,nome, nomeFunc, salario, idade)
+Docente::Docente(int id, std::string nome, std::string nomeFunc, double salario, int idade, std::string grauAcademico, std::string curso, std::string estado): Funcionario(id, nome, nomeFunc, salario, idade)
 {
     this->grauAcademico = grauAcademico;
     this->curso = curso;

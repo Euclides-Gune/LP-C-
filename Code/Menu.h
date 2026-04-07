@@ -32,12 +32,23 @@ static int numeroDe(std::string f)
     return count;
 }
 
+static std::string cleanString(char l1, char l2, std::string str)
+{
+    for(int i = 0; i < str.length(); i++) {
+        if(str.at(i) == l1) {
+            str.at(i) = l2;
+        }
+    }
+    return str;
+}
+
 static void registrarInstituicao()
 {
     int id = numeroDe("insts.txt") + 1;
-    std::cout << "Nome da instituicao: ";
+    std::cout << "Nome da instituicao(acronimo): ";
     std::string nomeInst{};
     std::getline(std::cin >> std::ws, nomeInst);
+    nomeInst = cleanString(' ', '-', nomeInst);
 
     Instituicao* inst = new Instituicao(id, nomeInst);
 
@@ -92,9 +103,9 @@ static void registrarConta(std::string nomeInst, std::string titular, std::strin
     int id = numeroDe("contas.txt") + 1;
     ContaCartao* cc = new ContaCartao(id, nomeInst, senha, saldo, titular);
     std::ofstream outf { "contas.txt", std::ios::app };
-    outf.close();
     outf << cc->getID() << ' ' << cc->getNome() << ' ' << cc->getTitular() << ' ' << cargo << ' ' << cc->getSaldo() << ' ' << cc->getSenha() << '\n';
     delete cc;
+    outf.close();
 }
 
 static void registrarFuncionario(std::string nomeInst, std::vector<Docente>& docs, std::vector<Secretario>& secs)
@@ -105,6 +116,7 @@ static void registrarFuncionario(std::string nomeInst, std::vector<Docente>& doc
     double salario{};
     std::cout << "Nome: ";
     std::getline(std::cin >> std::ws, nome);
+    nome = cleanString(' ', '-', nome);
     do
     {
         std::cout << "Idade: ";
@@ -135,6 +147,7 @@ static void registrarFuncionario(std::string nomeInst, std::vector<Docente>& doc
             std::getline(std::cin >> std::ws, grau);
             std::cout << "Curso: ";
             std::getline(std::cin >> std::ws, curso);
+            curso = cleanString(' ', '-', curso);
             int opc{};
             do
             {
@@ -158,6 +171,7 @@ static void registrarFuncionario(std::string nomeInst, std::vector<Docente>& doc
         std::string dep{};
         std::cout << "Departamento: ";
         std::getline(std::cin >> std::ws, dep);
+        dep = cleanString(' ', '-', dep);
         Secretario* ss = new Secretario(id, nomeInst, nome, salario, idade, dep);
         outf << ss->getID() << ' ' << ss->getNome() << ' ' << ss->getNomeFunc() << ' ' << ss->getSalario() << ' ' << ss->getIdade() << ' ' << ss->getDepartamento() << ' ' << cargo << ' ' << '\n';
         secs.push_back(*ss);
@@ -165,7 +179,7 @@ static void registrarFuncionario(std::string nomeInst, std::vector<Docente>& doc
     }
 
     outf.close();
-
+    
     registrarConta(nomeInst, nome, cargo);
 }
 
@@ -174,6 +188,7 @@ static void registrarFuncionarios(std::vector<Docente>& docs, std::vector<Secret
     std::cout << "Digite o nome da instituicao: ";
     std::string nomeInst{};
     std::getline(std::cin >> std::ws, nomeInst);
+    nomeInst = cleanString(' ', '-', nomeInst);
     if(validarInstituicao(nomeInst)) {
         registrarFuncionario(nomeInst, docs, secs);
     } else {
@@ -187,9 +202,11 @@ static ContaCartao dadosDaConta(std::string& cargo)
     std::cout << "Nome da instituicao: ";
     std::string nomeI{};
     std::getline(std::cin >> std::ws, nomeI);
+    nomeI = cleanString(' ', '-', nomeI);
     std::cout << "Titular: ";
     std::string titular{};
     std::getline(std::cin >> std::ws, titular);
+    titular = cleanString(' ', '-', titular);
     std::string pass{};
     do
     {
@@ -237,6 +254,8 @@ static ContaCartao dadosDaConta(std::string& cargo)
             break;
         }
         if(nomeI == nomeInst && nome == titular && senha == pass) {
+            nomeInst = cleanString('-', ' ', nomeInst);
+            nome = cleanString('-', ' ', nome);
             cc = ContaCartao(id, nomeInst, senha, saldo, nome);
             return cc;
             break;

@@ -1,5 +1,5 @@
-#ifndef Instiuicao_H
-#define Instiuicao_H
+#ifndef INSTITUICAO_H
+#define INSTITUICAO_H
 
 #include <iostream>
 
